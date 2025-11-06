@@ -33,7 +33,7 @@ let associados = [];
         // Adicionar Associado
         function adicionarAssociado(event) {
             event.preventDefault();
-            
+    
             const associado = {
                 id: Date.now(),
                 nome: document.getElementById('nome').value,
@@ -44,11 +44,13 @@ let associados = [];
                 dataCadastro: new Date().toLocaleDateString('pt-BR')
             };
 
-            associados.push(associado);
-            salvarDados();
-            mostrarAlerta('Associado cadastrado com sucesso!', 'success');
-            document.getElementById('formAssociado').reset();
-            atualizarListagem();
+             if (confirm('Deseja realmente cadastrar este associado?')) {
+             associados.push(associado);
+             salvarDados();
+             mostrarAlerta('Associado cadastrado com sucesso!', 'success');
+             document.getElementById('formAssociado').reset();
+             atualizarListagem();
+             }
         }
 
         // Remover Associado
